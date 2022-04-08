@@ -63,7 +63,7 @@ class EndUser(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=150, blank=True)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
-    register_date = models.DateTimeField(auto_add_now = False)
+    register_date = models.DateTimeField(auto_now_add = True, null = True)
     objects = CustomAccountManager()
 
     USERNAME_FIELD = 'email'
