@@ -180,5 +180,5 @@ thumb
 sketch
 
 
-karaokio_backend/karaokio_backend/tests
+karaokio_backend/event/tests
 # End of https://www.toptal.com/developers/gitignore/api/django,react
