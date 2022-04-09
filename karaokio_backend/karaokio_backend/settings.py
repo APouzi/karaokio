@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 from datetime import timedelta
 from secret_file import SECRET_KEY as sec_key
@@ -176,3 +176,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Asks if media folder exists, if it doesn't creates media folder. 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+#This will be used as the url to request items from the frontend, whether to get items or to put them. 
+MEDIA_URL = "/media/"
