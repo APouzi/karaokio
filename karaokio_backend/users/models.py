@@ -6,10 +6,10 @@ from venues.models import Venue
 from event.models import Event
 
 def upload_to(instance, filename):
-    return f"profile/{filename}"
+    return f"userprofile/{filename}"
 
 class UserProfile(models.Model):
-    image = models.ImageField(upload_to = upload_to, default = "userProfile/default.jpg")
+    image = models.ImageField(upload_to = upload_to, default = "userprofile/default.jpg")
     endUser = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete= models.CASCADE)#Not entirely sure about "on_delete", to be 100%.
     state = models.CharField(max_length=2, null = True)
     zip = models.IntegerField(default = 11111, validators=[MaxValueValidator(99999)])

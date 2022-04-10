@@ -11,7 +11,7 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from django.contrib.auth import get_user_model
 from .tasks import add
-
+from rest_framework.parsers import MultiPartParser, FormParser
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 
     @classmethod
@@ -53,7 +53,6 @@ class UserProfileHanlder(RetrieveUpdateAPIView):
     serializer_class = EndUserProfilepdateSerializer
 
     def get_object(self):
-        add.delay(1,2)
         return UserProfile.objects.get(endUser = self.request.user)
 # Handles put AND Patch
     def perform_update(self, serializer):

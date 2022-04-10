@@ -6,6 +6,20 @@ from .serializers import VenueListSerializer, VenueSerialzier
 from rest_framework.permissions import IsAuthenticated
 from users.models import EndUserVenueFavoriteList, UserProfile
 from rest_framework.response import Response
+from rest_framework.permissions import BasePermission, SAFE_METHODS
+
+class VenueUserPermission(BasePermission):
+    
+    def has_permission(self, request, view):
+        return request.user and request.user.is_authenticated
+    
+    def has_object_permission(self, request, view, obj):
+        if request.method in SAFE_METHODS:
+            return True
+        return obj.created_by == request.user
+
+
+
 # Create your views here.
 class GetVenueList(ListAPIView):
     queryset = Venue.objects.all()
@@ -26,13 +40,19 @@ class CreateVenue(CreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(created_by = self.request.user)
-    
+
+
 class RetrieveUpdateVenue(RetrieveUpdateAPIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [VenueUserPermission]
     serializer_class = VenueSerialzier
 
     def get_object(self):
-        return Venue.objects.get(created_by = self.request.user.id)
+        obj = Venue.objects.get(id = self.kwargs['pk'])
+        self.check_object_permissions(self.request, obj)
+        return obj
+    
+
+
 
 # Must add logic for missing venues and such, though the only way these would be triggered is if they appear in the frontend in the first place. Still though, for later
 class VenueFavoriteList(RetrieveUpdateDestroyAPIView):

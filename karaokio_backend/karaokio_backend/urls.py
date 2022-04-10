@@ -28,5 +28,6 @@ urlpatterns = [
     path('events/', include('event.urls')),
 ]
 
+# Will be using S3 for static files
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

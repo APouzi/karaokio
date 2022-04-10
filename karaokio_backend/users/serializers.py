@@ -22,7 +22,7 @@ class EndUserUpdateSerializer(serializers.ModelSerializer):
 class EndUserProfilepdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserProfile
-        fields = ["endUser","state", "zip"]
+        fields = ["state", "zip", "image"]
     
         
     
