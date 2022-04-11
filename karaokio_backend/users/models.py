@@ -6,7 +6,7 @@ from venues.models import Venue
 from event.models import Event
 
 def upload_to(instance, filename):
-    return f"userprofile/{filename}"
+    return f"userprofile/{instance.endUser.email}/{filename}"
 
 class UserProfile(models.Model):
     image = models.ImageField(upload_to = upload_to, default = "userprofile/default.jpg")
