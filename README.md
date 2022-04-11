@@ -8,6 +8,30 @@
 6. install django-REST simple-JWT authentication system (in the django-REST authentication system)
 
 
+### Preparing the workspace
+
+It's recommended to use venv or other virtualization to maintain python env, ie: [venv](https://docs.python.org/3/library/venv.html).
+
+```shell
+# create
+python3 -m venv ./.venv/
+
+# activate
+. .venv/bin/activate
+
+# check env
+which python
+# /.venv/bin/python
+python --version
+# Python 3.9.9
+```
+
+### Install Dependencies
+```shell
+pip install -r requirements.txt
+```
+
+
 ## First time setup (django-backend):
 
 When running the application for the first time ensure you've run migrations and created superuser.
