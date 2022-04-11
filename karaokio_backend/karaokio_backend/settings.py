@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import os
 from pathlib import Path
 from datetime import timedelta
-from secret_file import SECRET_KEY as sec_key
+from secret_file import SECRET_KEY as sec_key, AWS_ACCESS_KEY_ID as aws_access_key_id, AWS_SECRET_ACCESS_KEY as aws_access_key
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -181,3 +181,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 #This will be used as the url to request items from the frontend, whether to get items or to put them. 
 MEDIA_URL = "/media/"
+
+
+# AWS S3 Settings:
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+AWS_ACCESS_KEY_ID = aws_access_key_id
+AWS_SECRET_ACCESS_KEY = aws_access_key
+AWS_STORAGE_BUCKET_NAME = "karaokio-test"
+AWS_QUERYSTRING_AUTH = False #Remove authentication from URLs since bucket is public
