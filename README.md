@@ -1,12 +1,5 @@
 
 ## Installation(django-backend):
-1. install virtualenv in the backend of entire project
-2. go activate virtualenv while in backend and create the virtualenv environment.
-3. install django
-4. install install django-REST
-5. apply settings to the Settings.py if needed(probably not with this)
-6. install django-REST simple-JWT authentication system (in the django-REST authentication system)
-
 
 ### Preparing the workspace
 
@@ -27,6 +20,7 @@ python --version
 ```
 
 ### Install Dependencies
+
 ```shell
 pip install -r requirements.txt
 ```
