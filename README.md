@@ -43,8 +43,6 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 
-_This is an important step in deployment, but I would make it something easy when using sqlite_
-
 ### Running the server
 
 ```shell
